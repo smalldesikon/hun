@@ -1,0 +1,530 @@
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "KeySystemGui"
+ScreenGui.DisplayOrder = 10
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 320, 0, 200)
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Frame.BackgroundTransparency = 0.2
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true
+Frame.ZIndex = 2
+Frame.Parent = ScreenGui
+
+local Glow = Instance.new("ImageLabel")
+Glow.Name = "Glow"
+Glow.Image = "rbxassetid://5028857084"
+Glow.ImageTransparency = 0.9
+Glow.ScaleType = Enum.ScaleType.Slice
+Glow.SliceCenter = Rect.new(100, 100, 100, 100)
+Glow.Position = UDim2.new(-0.1, 0, -0.1, 0)
+Glow.Size = UDim2.new(1.2, 0, 1.2, 0)
+Glow.BackgroundTransparency = 1
+Glow.ZIndex = 1
+Glow.Parent = Frame
+
+local BackgroundEffect = Instance.new("Frame")
+BackgroundEffect.Size = UDim2.new(1, 0, 1, 0)
+BackgroundEffect.Position = UDim2.new(0, 0, 0, 0)
+BackgroundEffect.BackgroundTransparency = 1
+BackgroundEffect.ZIndex = 0
+BackgroundEffect.Parent = Frame
+
+local DiagonalPattern = Instance.new("ImageLabel")
+DiagonalPattern.Image = "rbxassetid://9889818564"
+DiagonalPattern.Size = UDim2.new(1, 0, 1, 0)
+DiagonalPattern.Position = UDim2.new(0, 0, 0, 0)
+DiagonalPattern.BackgroundTransparency = 1
+DiagonalPattern.ImageTransparency = 0.95
+DiagonalPattern.ImageColor3 = Color3.fromRGB(100, 0, 150)
+DiagonalPattern.ZIndex = 0
+DiagonalPattern.Parent = BackgroundEffect
+
+local Particles = Instance.new("Frame")
+Particles.Size = UDim2.new(1, 0, 1, 0)
+Particles.BackgroundTransparency = 1
+Particles.ZIndex = 1
+Particles.Parent = BackgroundEffect
+
+for i = 1, 15 do
+    local Particle = Instance.new("ImageLabel")
+    Particle.Name = "Particle"..i
+    Particle.Image = "rbxassetid://266154006"
+    Particle.Size = UDim2.new(0.05, 0, 0.05, 0)
+    Particle.AnchorPoint = Vector2.new(0.5, 0.5)
+    Particle.Position = UDim2.new(math.random(), 0, math.random(), 0)
+    Particle.BackgroundTransparency = 1
+    Particle.ImageColor3 = Color3.fromHSV(i/15, 0.8, 0.7)
+    Particle.ImageTransparency = 0.7
+    Particle.ZIndex = 1
+    Particle.Rotation = math.random(0, 360)
+    Particle.Parent = Particles
+    
+    spawn(function()
+        while Particle do
+            local time = tick()
+            Particle.Position = UDim2.new(
+                (math.sin(time * 0.5 + i) + 1)/2, 
+                math.sin(time * 1 + i * 2) * 20, 
+                (math.cos(time * 0.7 + i * 1.5) + 1)/2, 
+                math.cos(time * 1.2 + i * 2.5) * 15
+            )
+            Particle.ImageColor3 = Color3.fromHSV((time * 0.05 + i * 0.0667) % 1, 0.8, 0.7)
+            wait(0.03)
+        end
+    end)
+end
+
+local FrameCorner = Instance.new("UICorner")
+FrameCorner.CornerRadius = UDim.new(0, 12)
+FrameCorner.Parent = Frame
+
+local FrameStroke = Instance.new("UIStroke")
+FrameStroke.Color = Color3.fromRGB(80, 0, 120)
+FrameStroke.Thickness = 2
+FrameStroke.Transparency = 0.7
+FrameStroke.LineJoinMode = Enum.LineJoinMode.Round
+FrameStroke.Parent = Frame
+
+local TopBar = Instance.new("Frame")
+TopBar.Size = UDim2.new(1, 0, 0.08, 0)
+TopBar.Position = UDim2.new(0, 0, 0, 0)
+TopBar.BackgroundColor3 = Color3.fromRGB(30, 0, 50)
+TopBar.BackgroundTransparency = 0.4
+TopBar.BorderSizePixel = 0
+TopBar.ZIndex = 3
+TopBar.Parent = Frame
+
+local TopBarCorner = Instance.new("UICorner")
+TopBarCorner.CornerRadius = UDim.new(0, 12)
+TopBarCorner.Parent = TopBar
+
+local TopBarGradient = Instance.new("UIGradient")
+TopBarGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(120, 0, 180)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(80, 0, 150)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 0, 80))
+})
+TopBarGradient.Rotation = 90
+TopBarGradient.Parent = TopBar
+
+local TopBarStroke = Instance.new("UIStroke")
+TopBarStroke.Color = Color3.fromRGB(150, 50, 200)
+TopBarStroke.Thickness = 1
+TopBarStroke.Transparency = 0.7
+TopBarStroke.Parent = TopBar
+
+local Close = Instance.new("ImageButton")
+Close.Name = "Close"
+Close.Size = UDim2.new(0, 32, 0, 32)
+Close.Position = UDim2.new(0.97, -40, 0.03, 0)
+Close.BackgroundTransparency = 1
+Close.Image = "rbxassetid://6023426935"
+Close.ScaleType = Enum.ScaleType.Fit
+Close.ZIndex = 5
+Close.Parent = Frame
+
+local CloseGlow = Instance.new("UIGradient")
+CloseGlow.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 100, 150)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 100))
+})
+CloseGlow.Rotation = 135
+CloseGlow.Enabled = false
+CloseGlow.Parent = Close
+
+local closeStroke = Instance.new("UIStroke")
+closeStroke.Color = Color3.fromRGB(200, 50, 150)
+closeStroke.Thickness = 2
+closeStroke.Parent = Close
+
+Close.MouseEnter:Connect(function()
+    game.TweenService:Create(Close, TweenInfo.new(0.2), {Size = UDim2.new(0, 36, 0, 36)}):Play()
+    game.TweenService:Create(closeStroke, TweenInfo.new(0.2), {Thickness = 3}):Play()
+    CloseGlow.Enabled = true
+end)
+
+Close.MouseLeave:Connect(function()
+    game.TweenService:Create(Close, TweenInfo.new(0.2), {Size = UDim2.new(0, 32, 0, 32)}):Play()
+    game.TweenService:Create(closeStroke, TweenInfo.new(0.2), {Thickness = 2}):Play()
+    CloseGlow.Enabled = false
+end)
+
+Close.MouseButton1Click:Connect(function()
+    game.TweenService:Create(Frame, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+    
+    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = game:GetService("TweenService"):Create(Frame, tweenInfo, {
+        Size = UDim2.new(0, 0, 0, 0),
+        Position = UDim2.new(0.5, 0, 0.5, 0)
+    })
+    tween:Play()
+    tween.Completed:Connect(function()
+        ScreenGui:Destroy()
+    end)
+end)
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Size = UDim2.new(0.6, 0, 0, 36)
+Title.Position = UDim2.new(0.2, 0, 0.01, 0)
+Title.Text = "混脚本卡密系统"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 24
+Title.TextColor3 = Color3.fromRGB(240, 180, 255)
+Title.TextStrokeTransparency = 0.7
+Title.BackgroundTransparency = 1
+Title.ZIndex = 5
+Title.TextXAlignment = Enum.TextXAlignment.Center
+Title.Parent = Frame
+
+local TitleStroke = Instance.new("UIStroke")
+TitleStroke.Color = Color3.fromRGB(160, 40, 220)
+TitleStroke.Thickness = 1
+TitleStroke.Transparency = 0.2
+TitleStroke.Parent = Title
+
+local DecorLine = Instance.new("Frame")
+DecorLine.Size = UDim2.new(0.6, 0, 0, 2)
+DecorLine.Position = UDim2.new(0.2, 0, 0.1, 0)
+DecorLine.BackgroundColor3 = Color3.fromRGB(150, 40, 200)
+DecorLine.BorderSizePixel = 0
+DecorLine.ZIndex = 3
+DecorLine.Parent = Frame
+
+local DecorGradient = Instance.new("UIGradient")
+DecorGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 50, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(120, 0, 200)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 40, 200))
+})
+DecorGradient.Transparency = NumberSequence.new({
+    NumberSequenceKeypoint.new(0, 0),
+    NumberSequenceKeypoint.new(1, 0.5)
+})
+DecorGradient.Rotation = 90
+DecorGradient.Parent = DecorLine
+
+local Instructions = Instance.new("TextLabel")
+Instructions.Name = "Instructions"
+Instructions.Size = UDim2.new(0.9, 0, 0, 26)
+Instructions.Position = UDim2.new(0.05, 0, 0.22, 0)
+Instructions.Text = "输入正确的卡密以解锁混脚本！"
+Instructions.Font = Enum.Font.Gotham
+Instructions.TextSize = 16
+Instructions.TextColor3 = Color3.fromRGB(210, 160, 255)
+Instructions.BackgroundTransparency = 1
+Instructions.ZIndex = 5
+Instructions.TextXAlignment = Enum.TextXAlignment.Center
+Instructions.Parent = Frame
+
+local InstructionsStroke = Instance.new("UIStroke")
+InstructionsStroke.Color = Color3.fromRGB(120, 40, 160)
+InstructionsStroke.Thickness = 0.5
+InstructionsStroke.Parent = Instructions
+
+local TextBox = Instance.new("TextBox")
+TextBox.Name = "KeyInput"
+TextBox.Size = UDim2.new(0.8, 0, 0.15, 0)
+TextBox.Position = UDim2.new(0.1, 0, 0.35, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(25, 15, 35)
+TextBox.Text = "输入卡密..."
+TextBox.Font = Enum.Font.Gotham
+TextBox.TextSize = 18
+TextBox.TextColor3 = Color3.fromRGB(220, 180, 255)
+TextBox.PlaceholderColor3 = Color3.fromRGB(120, 80, 160)
+TextBox.PlaceholderText = "输入卡密..."
+TextBox.TextXAlignment = Enum.TextXAlignment.Center
+TextBox.ZIndex = 5
+TextBox.Parent = Frame
+
+local TextBoxCorner = Instance.new("UICorner")
+TextBoxCorner.CornerRadius = UDim.new(0, 8)
+TextBoxCorner.Parent = TextBox
+
+local TextboxStroke = Instance.new("UIStroke")
+TextboxStroke.Color = Color3.fromRGB(100, 0, 150)
+TextboxStroke.Thickness = 2
+TextboxStroke.Transparency = 0.3
+TextboxStroke.Parent = TextBox
+
+local TextboxInnerGlow = Instance.new("UIGradient")
+TextboxInnerGlow.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 50, 230)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(140, 30, 190))
+})
+TextboxInnerGlow.Transparency = NumberSequence.new({
+    NumberSequenceKeypoint.new(0, 0.8),
+    NumberSequenceKeypoint.new(1, 0.9)
+})
+TextboxInnerGlow.Rotation = 90
+TextboxInnerGlow.Parent = TextBox
+
+local ButtonContainer = Instance.new("Frame")
+ButtonContainer.Name = "ButtonContainer"
+ButtonContainer.Size = UDim2.new(0.9, 0, 0.2, 0)
+ButtonContainer.Position = UDim2.new(0.05, 0, 0.6, 0)
+ButtonContainer.BackgroundTransparency = 1
+ButtonContainer.Parent = Frame
+
+local GetKey = Instance.new("ImageButton")
+GetKey.Name = "GetKeyButton"
+GetKey.Size = UDim2.new(0.4, 0, 1, 0)
+GetKey.Position = UDim2.new(0.05, 0, 0, 0)
+GetKey.AutoButtonColor = false
+GetKey.ZIndex = 5
+GetKey.Parent = ButtonContainer
+
+local GetKeyLabel = Instance.new("TextLabel")
+GetKeyLabel.Size = UDim2.new(1, 0, 1, 0)
+GetKeyLabel.Text = "获取卡密"
+GetKeyLabel.Font = Enum.Font.GothamBold
+GetKeyLabel.TextSize = 18
+GetKeyLabel.TextColor3 = Color3.fromRGB(230, 200, 255)
+GetKeyLabel.BackgroundTransparency = 1
+GetKeyLabel.ZIndex = 6
+GetKeyLabel.Parent = GetKey
+
+local GetKeyCorner = Instance.new("UICorner")
+GetKeyCorner.CornerRadius = UDim.new(0, 8)
+GetKeyCorner.Parent = GetKey
+
+local GetKeyGradient = Instance.new("UIGradient")
+GetKeyGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(60, 0, 90)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 0, 60))
+})
+GetKeyGradient.Rotation = 90
+GetKeyGradient.Parent = GetKey
+
+local GetKeyStroke = Instance.new("UIStroke")
+GetKeyStroke.Color = Color3.fromRGB(150, 40, 200)
+GetKeyStroke.Thickness = 2
+GetKeyStroke.Parent = GetKey
+
+local GetKeyGlow = Instance.new("UIGradient")
+GetKeyGlow.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 50, 230)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(140, 30, 190))
+})
+GetKeyGlow.Transparency = NumberSequence.new(0.8)
+GetKeyGlow.Rotation = 90
+GetKeyGlow.Parent = GetKey
+
+local CheckKey = Instance.new("ImageButton")
+CheckKey.Name = "CheckKeyButton"
+CheckKey.Size = UDim2.new(0.4, 0, 1, 0)
+CheckKey.Position = UDim2.new(0.55, 0, 0, 0)
+CheckKey.AutoButtonColor = false
+CheckKey.ZIndex = 5
+CheckKey.Parent = ButtonContainer
+
+local CheckKeyLabel = Instance.new("TextLabel")
+CheckKeyLabel.Size = UDim2.new(1, 0, 1, 0)
+CheckKeyLabel.Text = "验证卡密"
+CheckKeyLabel.Font = Enum.Font.GothamBold
+CheckKeyLabel.TextSize = 18
+CheckKeyLabel.TextColor3 = Color3.fromRGB(230, 200, 255)
+CheckKeyLabel.BackgroundTransparency = 1
+CheckKeyLabel.ZIndex = 6
+CheckKeyLabel.Parent = CheckKey
+
+local CheckKeyCorner = Instance.new("UICorner")
+CheckKeyCorner.CornerRadius = UDim.new(0, 8)
+CheckKeyCorner.Parent = CheckKey
+
+local CheckKeyGradient = Instance.new("UIGradient")
+CheckKeyGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(90, 0, 120)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(60, 0, 90))
+})
+CheckKeyGradient.Rotation = 90
+CheckKeyGradient.Parent = CheckKey
+
+local CheckKeyStroke = Instance.new("UIStroke")
+CheckKeyStroke.Color = Color3.fromRGB(180, 60, 220)
+CheckKeyStroke.Thickness = 2
+CheckKeyStroke.Parent = CheckKey
+
+local CheckKeyGlow = Instance.new("UIGradient")
+CheckKeyGlow.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 80, 250)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(160, 40, 210))
+})
+CheckKeyGlow.Transparency = NumberSequence.new(0.8)
+CheckKeyGlow.Rotation = 90
+CheckKeyGlow.Parent = CheckKey
+
+local function setupButtonHoverEffect(button, label, origra, hoverGradient, oristroecolor, hoverStrokeColor)
+    button.MouseEnter:Connect(function()
+        game.TweenService:Create(button, TweenInfo.new(0.2), {Size = UDim2.new(0.41, 0, 1.05, 0)}):Play()
+        game.TweenService:Create(label, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(255, 240, 255)}):Play()
+        button.UIStroke.Color = hoverStrokeColor
+    end)
+    
+    button.MouseLeave:Connect(function()
+        game.TweenService:Create(button, TweenInfo.new(0.2), {Size = UDim2.new(0.4, 0, 1, 0)}):Play()
+        game.TweenService:Create(label, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(230, 200, 255)}):Play()
+        button.UIStroke.Color = originalStrokeColor
+    end)
+    
+    button.MouseButton1Down:Connect(function()
+        game.TweenService:Create(button, TweenInfo.new(0.1), {Size = UDim2.new(0.39, 0, 0.95, 0)}):Play()
+    end)
+    
+    button.MouseButton1Up:Connect(function()
+        game.TweenService:Create(button, TweenInfo.new(0.1), {Size = UDim2.new(0.4, 0, 1, 0)}):Play()
+    end)
+end
+
+setupButtonHoverEffect(
+    GetKey, 
+    GetKeyLabel, 
+    GetKeyGradient, 
+    nil, 
+    Color3.fromRGB(150, 40, 200), 
+    Color3.fromRGB(180, 60, 230)
+)
+
+setupButtonHoverEffect(
+    CheckKey, 
+    CheckKeyLabel, 
+    CheckKeyGradient, 
+    nil, 
+    Color3.fromRGB(180, 60, 220), 
+    Color3.fromRGB(210, 80, 255)
+)
+
+local Copyright = Instance.new("TextLabel")
+Copyright.Text = "混脚本 v1.0 © 2023"
+Copyright.Font = Enum.Font.Gotham
+Copyright.TextSize = 12
+Copyright.TextColor3 = Color3.fromRGB(120, 80, 160)
+Copyright.BackgroundTransparency = 1
+Copyright.Size = UDim2.new(1, 0, 0, 20)
+Copyright.Position = UDim2.new(0, 0, 0.9, 0) 
+Copyright.ZIndex = 3
+Copyright.Parent = Frame
+
+TextBox.Focused:Connect(function()
+    if TextBox.Text == "输入卡密..." then
+        TextBox.Text = ""
+    end
+    game.TweenService:Create(TextBox, TweenInfo.new(0.2), {
+        BackgroundColor3 = Color3.fromRGB(35, 20, 45),
+        Size = UDim2.new(0.82, 0, 0.16, 0)
+    }):Play()
+    game.TweenService:Create(TextboxStroke, TweenInfo.new(0.2), {
+        Color = Color3.fromRGB(180, 50, 230),
+        Thickness = 3
+    }):Play()
+end)
+
+TextBox.FocusLost:Connect(function()
+    if TextBox.Text == "" then
+        TextBox.Text = "输入卡密..."
+    end
+    game.TweenService:Create(TextBox, TweenInfo.new(0.2), {
+        BackgroundColor3 = Color3.fromRGB(25, 15, 35),
+        Size = UDim2.new(0.8, 0, 0.15, 0)
+    }):Play()
+    game.TweenService:Create(TextboxStroke, TweenInfo.new(0.2), {
+        Color = Color3.fromRGB(100, 0, 150),
+        Thickness = 2
+    }):Play()
+end)
+
+GetKey.MouseButton1Click:Connect(function()
+    TextBox.Text = "已复制混脚本官群链接."
+    setclipboard("加入混脚本官群获取卡密！这里")
+    wait(1)
+    TextBox.Text = "输入卡密..."
+end)
+
+local function validateKey(key)
+    if key == "hunnb" then
+        return "script1"
+    elseif key == "混脚本牛逼" then
+        return "script2"
+    elseif key == "混脚本垃圾" then
+        return "script3"
+    else
+        return false
+    end
+end
+
+CheckKey.MouseButton1Click:Connect(function()
+    local enteredKey = TextBox.Text
+    local validationResult = validateKey(enteredKey)
+    
+    if validationResult == "script1" then
+        TextBox.Text = "欢迎使用混脚本!"
+        wait(1)
+        game.TweenService:Create(Frame, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+        local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local tween = game:GetService("TweenService"):Create(Frame, tweenInfo, {
+            Size = UDim2.new(0, 0, 0, 0),
+            Position = UDim2.new(0.5, 0, 0.5, 0)
+        })
+        tween:Play()
+        tween.Completed:Connect(function()
+            ScreenGui:Destroy()
+        end)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/7b980dd8b3c4ec823bd3227697b75e7ebc9b7274/hunnb"))()
+    elseif validationResult == "script2" then
+        TextBox.Text = "欢迎使用混脚本!"
+        wait(1)
+        game.TweenService:Create(Frame, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+        local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local tween = game:GetService("TweenService"):Create(Frame, tweenInfo, {
+            Size = UDim2.new(0, 0, 0, 0),
+            Position = UDim2.new(0.5, 0, 0.5, 0)
+        })
+        tween:Play()
+        tween.Completed:Connect(function()
+            ScreenGui:Destroy()
+        end)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/7b980dd8b3c4ec823bd3227697b75e7ebc9b7274/hunnb"))()
+    elseif validationResult == "script3" then
+        TextBox.Text = "验证成功..."
+        wait(0.5)
+        TextBox.Text = "混脚本加载中"
+        wait(0.5)
+        TextBox.Text = "混脚本加载中."
+        wait(0.5)
+        TextBox.Text = "混脚本加载中.."
+        wait(0.5)
+        TextBox.Text = "混脚本加载中..."
+        wait(1)
+        TextBox.Text = "我操你妈"
+        wait(1)
+        TextBox.Text = "输入卡密..."
+    else
+        TextBox.Text = "卡密错误，请重试！"
+        TextBox.TextColor3 = Color3.fromRGB(255, 100, 100)
+        wait(1)
+        TextBox.Text = "输入卡密..."
+        TextBox.TextColor3 = Color3.fromRGB(220, 180, 255)
+    end
+end)
+
+Frame.Size = UDim2.new(0, 10, 0, 10)
+Frame.BackgroundTransparency = 1
+Frame.BackgroundTransparency = 1
+
+wait(0.1)
+
+game.TweenService:Create(Frame, TweenInfo.new(0.5), {BackgroundTransparency = 0.5}):Play()
+game.TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+    Size = UDim2.new(0, 320, 0, 200),
+    BackgroundTransparency = 0.2
+}):Play()
+
+for _, particle in ipairs(Particles:GetChildren()) do
+    particle.ImageTransparency = 1
+    game.TweenService:Create(particle, TweenInfo.new(0.8), {ImageTransparency = 0.7}):Play()
+end
