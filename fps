@@ -1,0 +1,29 @@
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function BoostFPS()
+    
+    local Lighting = game:GetService("Lighting")
+    Lighting.GlobalShadows = false
+    Lighting.FogEnd = 999999
+    settings().Rendering.QualityLevel = 1
+    
+    
+    for _, obj in pairs(workspace:GetDescendants()) do
+        if obj:IsA("Part") then
+            obj.Material = Enum.Material.Plastic
+        elseif obj:IsA("Decal") then
+            obj:Destroy()
+        end
+    end
+    
+    
+    settings().Network.PhysicsSend = 1
+    settings().Network.PhysicsSendRate = 60
+    
+    print(" FPS提升和网络优化已应用")
+end
+
+BoostFPS()
