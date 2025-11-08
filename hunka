@@ -474,7 +474,7 @@ CheckKey.MouseButton1Click:Connect(function()
         tween.Completed:Connect(function()
             ScreenGui:Destroy()
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/7b980dd8b3c4ec823bd3227697b75e7ebc9b7274/hunnb"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/2c280127f66717e307615c25fadab7a4ba2749a3/hun666"))()
     elseif validationResult == "script2" then
         TextBox.Text = "欢迎使用混脚本!"
         wait(1)
@@ -488,7 +488,7 @@ CheckKey.MouseButton1Click:Connect(function()
         tween.Completed:Connect(function()
             ScreenGui:Destroy()
         end)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/7b980dd8b3c4ec823bd3227697b75e7ebc9b7274/hunnb"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/2c280127f66717e307615c25fadab7a4ba2749a3/hun666"))()
     elseif validationResult == "script3" then
         TextBox.Text = "验证成功..."
         wait(0.5)
