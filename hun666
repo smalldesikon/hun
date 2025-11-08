@@ -55,6 +55,10 @@ local Tab3 = Tab("力量传奇")
 local Tab4 = Tab("驾驶帝国")
 local Tab5 = Tab("监狱人生")
 local Tab6 = Tab("战争大亨")
+local Tab7 = Tab("黑洞")
+local Tab8 = Tab("范围")
+local Tab9 = Tab("自瞄")
+local Tab10 = Tab("子追")
 
 Button(Tab1, "提升fps", function() 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/hun/ee906e570c0f5b22e580a20decaba23757533569/fps"))()
@@ -112,82 +116,6 @@ Button(Tab1, "玩家加入游戏提示", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
 end)
 
-Button(Tab1, "陌自瞄（死亡消失）", function() 
-    loadstring(game:HttpGet("https://pastefy.app/ZYMlyhhz/raw",true))()
-end)
-
-Button(Tab1, "宙斯自瞄", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20Aimbot.lua"))()
-end)
-
-Button(Tab1, "英文自瞄", function() 
-    loadstring(game:HttpGet("https://rentry.co/n55gmtpi/raw", true))()
-end)
-
-Button(Tab1, "自瞄50", function() 
-    loadstring(game:HttpGet("https://pastefy.app/b3uXjRF6/raw",true))()
-end)
-
-Button(Tab1, "自瞄100", function() 
-    loadstring(game:HttpGet("https://pastefy.app/tQrd2r0L/raw",true))()
-end)
-
-Button(Tab1, "自瞄150", function() 
-    loadstring(game:HttpGet("https://pastefy.app/UOQWFvGp/raw",true))()
-end)
-
-Button(Tab1, "自瞄200", function() 
-    loadstring(game:HttpGet("https://pastefy.app/b5CuDuer/raw",true))()
-end)
-
-Button(Tab1, "自瞄250", function() 
-    loadstring(game:HttpGet("https://pastefy.app/p2huH7eF/raw",true))()
-end)
-
-Button(Tab1, "自瞄300", function() 
-    loadstring(game:HttpGet("https://pastefy.app/nIyVhrvV/raw",true))()
-end)
-
-Button(Tab1, "自瞄350", function() 
-    loadstring(game:HttpGet("https://pastefy.app/pnjKHMvV/raw",true))()
-end)
-
-Button(Tab1, "自瞄400", function() 
-    loadstring(game:HttpGet("https://pastefy.app/LQuP7sjj/raw",true))()
-end)
-
-Button(Tab1, "自瞄600", function() 
-    loadstring(game:HttpGet("https://pastefy.app/WmcEe2HB/raw",true))()
-end)
-
-Button(Tab1, "自瞄全屏", function() 
-    loadstring(game:HttpGet("https://pastefy.app/n5LhGGgf/raw",true))()
-end)
-
-Button(Tab1, "阿尔子追", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/sgbs/main/%E4%B8%81%E4%B8%81%20%E6%B1%89%E5%8C%96%E8%87%AA%E7%9E%84.txt"))()
-end)
-
-Button(Tab1, "俄州子追", function() 
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/ClasiniZukov/e7547e7b48fa90d10eb7f85bd3569147/raw/f95cd3561a3bb3ac6172a14eb74233625b52e757/gistfile1.txt"))()
-end)
-
-Button(Tab1, "普通范围", function() 
-    loadstring(game:HttpGet("https://pastebin.com/raw/jiNwDbCN"))()
-end)
-
-Button(Tab1, "中等范围", function() 
-    loadstring(game:HttpGet("https://pastebin.com/raw/jiNwDbCN"))()
-end)
-
-Button(Tab1, "全图范围", function() 
-    loadstring(game:HttpGet("https://pastebin.com/raw/KKY9EpZU"))()
-end)
-
-Button(Tab1, "终极范围", function() 
-    loadstring(game:HttpGet("https://pastebin.com/raw/CAQ9x4A7"))()
-end)
-
 Button(Tab1, "飞车", function() 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/odhdshhe/-V2.0/refs/heads/main/%E5%86%B7%E9%A3%9E%E8%BD%A6%E6%BA%90%E7%A0%81.txt"))()
 end)
@@ -196,7 +124,7 @@ Button(Tab1, "飞行v1", function()
     loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\90\66\122\99\84\109\49\102\34\41\41\40\41\10")()
 end)
 
-Button(Tab1, "依飞行", function() 
+Button(Tab1, "冷飞行", function() 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/odhdshhe/-V3.0/refs/heads/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%ACV3(%E5%85%A8%E6%B8%B8%E6%88%8F%E9%80%9A%E7%94%A8)%20(1).txt"))()
 end)
 
@@ -566,22 +494,6 @@ Button(Tab1, "铁拳", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe/main/obf_rf6iQURzu1fqrytcnLBAvW34C9N55kS9g9G3CKz086rC47M6632sEd4ZZYB0AYgV.lua.txt'))()
 end)
 
-Button(Tab1, "双环控制黑洞", function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E5%8F%8C%E7%8E%AF%E6%8E%A7%E5%88%B6%E9%BB%91%E6%B4%9E.txt"))()
-end)
-
-Button(Tab1, "可爱黑洞[英文]", function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/KAWAII-AURA/main/kawaii_aura.lua"))()
-end)
-
-Button(Tab1, "哥特风黑洞", function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E5%93%A5%E7%89%B9%E9%A3%8E%E9%BB%91%E6%B4%9E.txt"))()
-end)
-
-Button(Tab1, "磁铁黑洞", function() 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E7%A3%81%E9%93%81%E9%BB%91%E6%B4%9EV2.txt"))()
-end)
-
 Toggle(Tab2, "自动吸环", false, function(state)
     NinjaLegends.AutoFarm = state
     if state then
@@ -863,4 +775,96 @@ Toggle(Tab6, "枪械全自动", false, function(state)
             end
         end)
     end
+end)
+
+Button(Tab7, "双环控制黑洞", function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E5%8F%8C%E7%8E%AF%E6%8E%A7%E5%88%B6%E9%BB%91%E6%B4%9E.txt"))()
+end)
+
+Button(Tab7, "可爱黑洞[英文]", function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/KAWAII-AURA/main/kawaii_aura.lua"))()
+end)
+
+Button(Tab7, "哥特风黑洞", function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E5%93%A5%E7%89%B9%E9%A3%8E%E9%BB%91%E6%B4%9E.txt"))()
+end)
+
+Button(Tab7, "磁铁黑洞", function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ke9460394-dot/ugik/refs/heads/main/%E7%A3%81%E9%93%81%E9%BB%91%E6%B4%9EV2.txt"))()
+end)
+
+Button(Tab8, "普通范围", function() 
+    loadstring(game:HttpGet("https://pastebin.com/raw/jiNwDbCN"))()
+end)
+
+Button(Tab8, "中等范围", function() 
+    loadstring(game:HttpGet("https://pastebin.com/raw/jiNwDbCN"))()
+end)
+
+Button(Tab8, "全图范围", function() 
+    loadstring(game:HttpGet("https://pastebin.com/raw/KKY9EpZU"))()
+end)
+
+Button(Tab8, "终极范围", function() 
+    loadstring(game:HttpGet("https://pastebin.com/raw/CAQ9x4A7"))()
+end)
+
+Button(Tab9, "陌自瞄（死亡消失）", function() 
+    loadstring(game:HttpGet("https://pastefy.app/ZYMlyhhz/raw",true))()
+end)
+
+Button(Tab9, "宙斯自瞄", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20Aimbot.lua"))()
+end)
+
+Button(Tab9, "英文自瞄", function() 
+    loadstring(game:HttpGet("https://rentry.co/n55gmtpi/raw", true))()
+end)
+
+Button(Tab9, "自瞄50", function() 
+    loadstring(game:HttpGet("https://pastefy.app/b3uXjRF6/raw",true))()
+end)
+
+Button(Tab9, "自瞄100", function() 
+    loadstring(game:HttpGet("https://pastefy.app/tQrd2r0L/raw",true))()
+end)
+
+Button(Tab9, "自瞄150", function() 
+    loadstring(game:HttpGet("https://pastefy.app/UOQWFvGp/raw",true))()
+end)
+
+Button(Tab9, "自瞄200", function() 
+    loadstring(game:HttpGet("https://pastefy.app/b5CuDuer/raw",true))()
+end)
+
+Button(Tab9, "自瞄250", function() 
+    loadstring(game:HttpGet("https://pastefy.app/p2huH7eF/raw",true))()
+end)
+
+Button(Tab9, "自瞄300", function() 
+    loadstring(game:HttpGet("https://pastefy.app/nIyVhrvV/raw",true))()
+end)
+
+Button(Tab9, "自瞄350", function() 
+    loadstring(game:HttpGet("https://pastefy.app/pnjKHMvV/raw",true))()
+end)
+
+Button(Tab9, "自瞄400", function() 
+    loadstring(game:HttpGet("https://pastefy.app/LQuP7sjj/raw",true))()
+end)
+
+Button(Tab9, "自瞄600", function() 
+    loadstring(game:HttpGet("https://pastefy.app/WmcEe2HB/raw",true))()
+end)
+
+Button(Tab9, "自瞄全屏", function() 
+    loadstring(game:HttpGet("https://pastefy.app/n5LhGGgf/raw",true))()
+end)
+
+Button(Tab10, "阿尔子追", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/sgbs/main/%E4%B8%81%E4%B8%81%20%E6%B1%89%E5%8C%96%E8%87%AA%E7%9E%84.txt"))()
+end)
+
+Button(Tab10, "俄州子追", function() 
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/ClasiniZukov/e7547e7b48fa90d10eb7f85bd3569147/raw/f95cd3561a3bb3ac6172a14eb74233625b52e757/gistfile1.txt"))()
 end)
